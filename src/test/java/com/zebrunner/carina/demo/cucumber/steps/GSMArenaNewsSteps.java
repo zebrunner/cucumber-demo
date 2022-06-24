@@ -19,7 +19,6 @@ import io.cucumber.java.en.When;
 
 
 public class GSMArenaNewsSteps extends CucumberRunner {
-    private int i = 0;
     
     HomePage homePage = null;
     NewsPage newsPage = null;
@@ -39,11 +38,7 @@ public class GSMArenaNewsSteps extends CucumberRunner {
 
     @Then("^page 'News' should be open$")
     public void pageSettingsShouldBeOpen() {
-        if (i==0) {
-            i++;
-            Assert.fail("fail");
-        }
-
+        Assert.fail("fail");
         Assert.assertTrue(newsPage.isPageOpened(), "News page is not opened!");
     }
     
