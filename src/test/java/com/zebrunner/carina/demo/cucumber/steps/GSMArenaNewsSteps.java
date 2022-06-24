@@ -19,12 +19,17 @@ import io.cucumber.java.en.When;
 
 
 public class GSMArenaNewsSteps extends CucumberRunner {
+    private static int i = 0;
     
     HomePage homePage = null;
     NewsPage newsPage = null;
 
     @Given("^I am on main page")
     public boolean iAmOnMainPage() {
+        if (i==0) {
+            i++;
+            Assert.fail("fail");
+        }
         homePage = new HomePage(getDriver());
         homePage.open();
         return homePage.isPageOpened();
