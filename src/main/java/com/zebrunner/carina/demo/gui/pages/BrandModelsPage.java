@@ -16,7 +16,7 @@ public class BrandModelsPage extends AbstractPage {
 
     public BrandModelsPage(WebDriver driver) {
         super(driver);
-        boolean b = s.equals("test");
+        s.equals("test");
     }
 
     public ModelInfoPage selectModel(String modelName) {
