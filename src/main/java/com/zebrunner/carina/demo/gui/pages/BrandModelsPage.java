@@ -9,6 +9,8 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.zebrunner.carina.demo.gui.components.ModelItem;
 
 public class BrandModelsPage extends AbstractPage {
+    String s
+        
     @FindBy(xpath = "//div[@id='review-body']//li")
     private List<ModelItem> models;
 
