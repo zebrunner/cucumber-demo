@@ -5,7 +5,7 @@
 	<parameter name="jenkinsJobName" value="new-job"/>
 	<parameter name="jenkinsJobType" value="api"/>
 	
-	<parameter name="scheduling" value="H 2 * * *\nH 10 * * *" /> 
+	<parameter name="scheduling" value="H 2 * * *" /> 
 
 	<parameter name="jenkinsEnvironments" value="DEMO"/>
 	
