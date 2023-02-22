@@ -9,12 +9,12 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.zebrunner.carina.demo.gui.components.ModelItem;
 
 public class BrandModelsPage extends AbstractPage {
-    Strong s = "123"
+    String s = "123";
     @FindBy(xpath = "//div[@id='review-body']//li")
     private List<ModelItem> models;
 
     public BrandModelsPage(WebDriver driver) {
-        super(driver);
+        super(driver);        
     }
 
     public ModelInfoPage selectModel(String modelName) {
