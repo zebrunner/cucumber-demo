@@ -6,6 +6,8 @@
     <parameter name="jenkinsJobType" value="web"/>
     <parameter name="jenkinsEnvironments" value="DEMO, PROD"/>
     <parameter name="jenkinsAutoScreenshot" value="false"/>
+    
+    <parameter name="capabilities" value="browserName=firefox" />
   
   
   <parameter name="scheduling" value="H 2 * * *::H 10 * * *" /> 
