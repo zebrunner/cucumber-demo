@@ -9,12 +9,13 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.zebrunner.carina.demo.gui.components.ModelItem;
 
 public class BrandModelsPage extends AbstractPage {
-    String s = "123";
+    String s
     @FindBy(xpath = "//div[@id='review-body']//li")
     private List<ModelItem> models;
 
     public BrandModelsPage(WebDriver driver) {
-        super(driver);        
+        super(driver);
+        s.equals("qwe");
     }
 
     public ModelInfoPage selectModel(String modelName) {
