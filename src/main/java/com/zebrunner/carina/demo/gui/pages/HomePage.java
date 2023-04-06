@@ -17,7 +17,11 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
 
 public class HomePage extends AbstractPage {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+    @FindBy(xpath = "//button[text()='Agree and proceed']")
+    private ExtendedWebElement acceptCookies;
 
     @FindBy(id = "footmenu")
     private FooterMenu footerMenu;
@@ -53,5 +57,11 @@ public class HomePage extends AbstractPage {
     
     public WeValuePrivacyAd getWeValuePrivacyAd() {
     	return new WeValuePrivacyAd(driver);
+    }
+
+    @Override
+    public void open() {
+        super.open();
+        acceptCookies.clickIfPresent();
     }
 }
