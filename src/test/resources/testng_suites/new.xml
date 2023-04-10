@@ -1,0 +1,33 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Carina Demo Tests - New">
+    <parameter name="suiteOwner" value="qpsdemo"/>
+
+    <parameter name="jenkinsJobName" value="Cucumber-New-Web-Test"/>
+    <parameter name="jenkinsJobType" value="web"/>
+    <parameter name="jenkinsEnvironments" value="DEMO, PROD"/>
+    <parameter name="jenkinsAutoScreenshot" value="false"/>
+    
+    <parameter name="capabilities" value="browserName=firefox" />
+  
+  
+  <parameter name="scheduling" value="H 2 * * *::H 10 * * *" /> 
+  
+  
+  <!-- declaring custom string, boolean, hidden and static choice fields -->
+<parameter name="stringParam::stringArgField::custom string desc" value="string value" />
+<parameter name="booleanParam::booleanArgField::custom boolean desc" value="true" />
+<parameter name="hiddenParam::hiddenArgField::custom hidden desc" value="hidden value" />
+<parameter name="choiceParam::choiceArgField::custom choice desc" value="1, 2, 3" />
+
+<!-- declaring custom exstensible field with groovy script. Semicolon ";" should be used as lines break -->
+<parameter name="extensibleChoice::myExtensibleChoice::myDesc" value="import static java.util.Calendar.*;def date = new Date().format('MM/dd/yyy');return ['Release_date' + date]" />
+
+    <test verbose="1"
+          name="GSM Arena News - Web tests by cucumber">
+        <classes>
+            <class name="com.zebrunner.carina.demo.CucumberWebSampleTest">
+            </class>
+        </classes>
+    </test>
+
+</suite>
