@@ -3,21 +3,25 @@ package com.zebrunner.carina.demo.gui.pages;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 
-import com.qaprosoft.carina.core.foundation.utils.Configuration;
-import com.qaprosoft.carina.core.foundation.utils.R;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.zebrunner.carina.demo.gui.components.FooterMenu;
 import com.zebrunner.carina.demo.gui.components.WeValuePrivacyAd;
+import com.zebrunner.carina.utils.Configuration;
+import com.zebrunner.carina.utils.R;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
 
 public class HomePage extends AbstractPage {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+    @FindBy(xpath = "//button[text()='Agree and proceed']")
+    private ExtendedWebElement acceptCookies;
 
     @FindBy(id = "footmenu")
     private FooterMenu footerMenu;
@@ -53,5 +57,11 @@ public class HomePage extends AbstractPage {
     
     public WeValuePrivacyAd getWeValuePrivacyAd() {
     	return new WeValuePrivacyAd(driver);
+    }
+
+    @Override
+    public void open() {
+        super.open();
+        acceptCookies.clickIfPresent();
     }
 }

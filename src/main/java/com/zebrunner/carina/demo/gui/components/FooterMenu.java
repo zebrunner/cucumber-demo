@@ -4,13 +4,14 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.zebrunner.carina.demo.gui.pages.CompareModelsPage;
 import com.zebrunner.carina.demo.gui.pages.HomePage;
 import com.zebrunner.carina.demo.gui.pages.NewsPage;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 
 public class FooterMenu extends AbstractUIObject {
+
     @FindBy(linkText = "Home")
     private ExtendedWebElement homeLink;
 
