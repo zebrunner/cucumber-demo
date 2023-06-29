@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import com.zebrunner.carina.demo.gui.components.FooterMenu;
 import com.zebrunner.carina.demo.gui.components.WeValuePrivacyAd;
-import com.zebrunner.carina.utils.Configuration;
-import com.zebrunner.carina.utils.R;
+import com.zebrunner.carina.utils.config.Configuration;
+import com.zebrunner.carina.webdriver.config.WebDriverConfiguration;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
@@ -35,7 +35,7 @@ public class HomePage extends AbstractPage {
     public HomePage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(newsColumn);
-        setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));
+        setPageAbsoluteURL(Configuration.getRequired(WebDriverConfiguration.Parameter.URL));
     }
 
     public FooterMenu getFooterMenu() {
