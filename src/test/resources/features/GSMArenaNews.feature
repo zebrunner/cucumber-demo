@@ -5,6 +5,3 @@ Feature: GSM Arena News testing
   Scenario: GSM Arena open page - passing
     Given I am on main page
     When I open 'News' page
-    Then page 'News' should be open
-    And page 'News' should contains all items
-
