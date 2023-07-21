@@ -13,35 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package com.zebrunner.carina.demo.gui.components;
+package com.zebrunner.carina.demo.gui.pages.desktop;
 
-import org.openqa.selenium.SearchContext;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.zebrunner.carina.demo.gui.components.ModelItem;
+import com.zebrunner.carina.demo.gui.pages.common.BrandModelsPageBase;
 import com.zebrunner.carina.demo.gui.pages.common.ModelInfoPageBase;
-import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
+import com.zebrunner.carina.utils.factory.DeviceType;
 
-public class ModelItem extends AbstractUIObject implements ICustomTypePageFactory {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = BrandModelsPageBase.class)
+public class BrandModelsPage extends BrandModelsPageBase {
 
-    @FindBy(xpath = ".//strong")
-    private ExtendedWebElement modelLabel;
+    @FindBy(xpath = "//div[@id='review-body']//li")
+    private List<ModelItem> models;
 
-    @FindBy(xpath = ".//a")
-    private ExtendedWebElement modelLink;
-
-    public ModelItem(WebDriver driver, SearchContext searchContext) {
-        super(driver, searchContext);
+    public BrandModelsPage(WebDriver driver) {
+        super(driver);
     }
 
-    public String readModel() {
-        return modelLabel.getText();
+    @Override
+    public ModelInfoPageBase selectModel(String modelName) {
+        for (ModelItem model : models) {
+            if (model.readModel().equalsIgnoreCase(modelName)) {
+                return model.openModelPage();
+            }
+        }
+        throw new RuntimeException("Unable to open model: " + modelName);
     }
 
-    public ModelInfoPageBase openModelPage() {
-        modelLink.click();
-        return initPage(driver, ModelInfoPageBase.class);
+    public List<ModelItem> getModels() {
+        return models;
     }
+
 }

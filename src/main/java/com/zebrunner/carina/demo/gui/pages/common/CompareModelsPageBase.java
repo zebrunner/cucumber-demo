@@ -13,39 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package com.zebrunner.carina.demo.gui.components.compare;
+package com.zebrunner.carina.demo.gui.pages.common;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class ModelSpecs {
+import org.openqa.selenium.WebDriver;
 
-    public enum SpecType {
-        TECHNOLOGY("Technology"),
-        ANNOUNCED("Announced");
+import com.zebrunner.carina.demo.gui.components.compare.ModelSpecs;
+import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
-        private final String type;
+public abstract class CompareModelsPageBase extends AbstractPage {
 
-        SpecType(String type) {
-            this.type = type;
-        }
-
-        public String getType() {
-            return type;
-        }
+    public CompareModelsPageBase(WebDriver driver) {
+        super(driver);
+        this.setPageURL("/compare.php3");
     }
 
-    private final Map<SpecType, String> modelSpecsMap;
+    public abstract List<ModelSpecs> compareModels(String... models);
 
-    public ModelSpecs() {
-        this.modelSpecsMap = new HashMap<>();
-    }
-
-    public void setToModelSpecsMap(SpecType specType, String spec) {
-        this.modelSpecsMap.put(specType, spec);
-    }
-
-    public String readSpec(SpecType specType) {
-        return modelSpecsMap.get(specType);
-    }
 }

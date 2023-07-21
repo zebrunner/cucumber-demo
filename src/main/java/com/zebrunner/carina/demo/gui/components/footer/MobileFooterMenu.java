@@ -13,25 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package com.zebrunner.carina.demo.gui.components;
+package com.zebrunner.carina.demo.gui.components.footer;
 
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.zebrunner.carina.demo.gui.pages.common.HomePageBase;
+import com.zebrunner.carina.demo.gui.pages.common.NewsPageBase;
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 
-public class NewsItem extends AbstractUIObject {
+public class MobileFooterMenu extends FooterMenuBase implements ICustomTypePageFactory {
 
-    @FindBy(xpath="./a")
-    public ExtendedWebElement titleLink;
-    
-    public NewsItem(WebDriver driver, SearchContext sc) {
-        super(driver, sc);
+    @FindBy(xpath = ".//a[text()='News']")
+    private ExtendedWebElement newsLink;
+
+    @FindBy(xpath = ".//a[text()='Home']")
+    private ExtendedWebElement homeLink;
+
+    public MobileFooterMenu(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
-    
-    public String readTitle() {
-        return titleLink.getText();
+
+    @Override
+    public NewsPageBase openNewsPage() {
+        newsLink.click();
+        return initPage(driver, NewsPageBase.class);
+    }
+
+    @Override
+    public HomePageBase openHomePage() {
+        homeLink.click();
+        return initPage(driver, HomePageBase.class);
     }
 }

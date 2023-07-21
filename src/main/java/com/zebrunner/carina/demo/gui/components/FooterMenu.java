@@ -4,13 +4,14 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import com.zebrunner.carina.demo.gui.pages.CompareModelsPage;
-import com.zebrunner.carina.demo.gui.pages.HomePage;
-import com.zebrunner.carina.demo.gui.pages.NewsPage;
+import com.zebrunner.carina.demo.gui.pages.common.CompareModelsPageBase;
+import com.zebrunner.carina.demo.gui.pages.common.HomePageBase;
+import com.zebrunner.carina.demo.gui.pages.common.NewsPageBase;
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 
-public class FooterMenu extends AbstractUIObject {
+public class FooterMenu extends AbstractUIObject implements ICustomTypePageFactory {
 
     @FindBy(linkText = "Home")
     private ExtendedWebElement homeLink;
@@ -25,18 +26,18 @@ public class FooterMenu extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public HomePage openHomePage() {
+    public HomePageBase openHomePage() {
         homeLink.click();
-        return new HomePage(driver);
+        return initPage(driver, HomePageBase.class);
     }
 
-    public CompareModelsPage openComparePage() {
+    public CompareModelsPageBase openComparePage() {
         compareLink.click();
-        return new CompareModelsPage(driver);
+        return initPage(driver, CompareModelsPageBase.class);
     }
     
-    public NewsPage openNewsPage() {
+    public NewsPageBase openNewsPage() {
         newsLink.click();
-        return new NewsPage(driver);
+        return initPage(driver, NewsPageBase.class);
     }
 }

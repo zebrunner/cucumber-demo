@@ -13,25 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package com.zebrunner.carina.demo.gui.components;
+package com.zebrunner.carina.demo.gui.pages.common;
 
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.zebrunner.carina.demo.gui.components.footer.FooterMenuBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
+import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
-public class NewsItem extends AbstractUIObject {
+public abstract class HomePageBase extends AbstractPage {
 
-    @FindBy(xpath="./a")
-    public ExtendedWebElement titleLink;
-    
-    public NewsItem(WebDriver driver, SearchContext sc) {
-        super(driver, sc);
+    @FindBy(xpath = "//button[text()='Agree and proceed']")
+    private ExtendedWebElement acceptCookies;
+
+    public HomePageBase(WebDriver driver) {
+        super(driver);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
     }
-    
-    public String readTitle() {
-        return titleLink.getText();
+
+    public abstract BrandModelsPageBase selectBrand(String brandName);
+
+    public abstract FooterMenuBase getFooterMenu();
+
+    public abstract CompareModelsPageBase openComparePage();
+
+    public abstract AllBrandsPageBase openAllBrandsPage();
+
+    @Override
+    public void open() {
+        super.open();
+        acceptCookies.clickIfPresent(3);
     }
+
 }

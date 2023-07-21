@@ -13,39 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package com.zebrunner.carina.demo.gui.components.compare;
+package com.zebrunner.carina.demo.gui.pages.common;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.openqa.selenium.WebDriver;
 
-public class ModelSpecs {
+import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
-    public enum SpecType {
-        TECHNOLOGY("Technology"),
-        ANNOUNCED("Announced");
+public abstract class ModelInfoPageBase extends AbstractPage {
 
-        private final String type;
-
-        SpecType(String type) {
-            this.type = type;
-        }
-
-        public String getType() {
-            return type;
-        }
+    public ModelInfoPageBase(WebDriver driver) {
+        super(driver);
     }
 
-    private final Map<SpecType, String> modelSpecsMap;
+    public abstract String readDisplay();
 
-    public ModelSpecs() {
-        this.modelSpecsMap = new HashMap<>();
-    }
+    public abstract String readCamera();
 
-    public void setToModelSpecsMap(SpecType specType, String spec) {
-        this.modelSpecsMap.put(specType, spec);
-    }
+    public abstract String readRam();
 
-    public String readSpec(SpecType specType) {
-        return modelSpecsMap.get(specType);
-    }
+    public abstract String readBattery();
+
 }

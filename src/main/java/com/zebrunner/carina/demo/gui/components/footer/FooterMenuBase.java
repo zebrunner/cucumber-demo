@@ -13,39 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package com.zebrunner.carina.demo.gui.components.compare;
+package com.zebrunner.carina.demo.gui.components.footer;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebDriver;
 
-public class ModelSpecs {
+import com.zebrunner.carina.demo.gui.pages.common.HomePageBase;
+import com.zebrunner.carina.demo.gui.pages.common.NewsPageBase;
+import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 
-    public enum SpecType {
-        TECHNOLOGY("Technology"),
-        ANNOUNCED("Announced");
+public abstract class FooterMenuBase extends AbstractUIObject {
 
-        private final String type;
-
-        SpecType(String type) {
-            this.type = type;
-        }
-
-        public String getType() {
-            return type;
-        }
+    public FooterMenuBase(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
 
-    private final Map<SpecType, String> modelSpecsMap;
+    public abstract NewsPageBase openNewsPage();
 
-    public ModelSpecs() {
-        this.modelSpecsMap = new HashMap<>();
-    }
-
-    public void setToModelSpecsMap(SpecType specType, String spec) {
-        this.modelSpecsMap.put(specType, spec);
-    }
-
-    public String readSpec(SpecType specType) {
-        return modelSpecsMap.get(specType);
-    }
+    public abstract HomePageBase openHomePage();
 }
