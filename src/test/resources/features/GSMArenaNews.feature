@@ -3,5 +3,4 @@ Feature: GSM Arena News testing
 
   @demo
   Scenario: GSM Arena open page - passing
-    Given I am on main page
     When I open 'News' page

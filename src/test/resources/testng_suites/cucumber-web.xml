@@ -7,9 +7,6 @@
     <parameter name="jenkinsEnvironments" value="DEMO"/>
     <parameter name="jenkinsAutoScreenshot" value="true"/>
 
-    <parameter name="web_capabilities_path" value="capabilities/mobile_web.properties"/>
-    <parameter name="mobile_capabilities_path" value="capabilities/android.properties"/>
-
     <test verbose="1"
           name="GSM Arena News - Web tests by cucumber">
         <classes>
