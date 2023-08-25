@@ -52,4 +52,9 @@ public class GSMArenaNewsSteps extends CucumberRunner {
         }
     }
 
+    @And("^page 'News' should contains all items2$")
+    public void pageSettingsShouldContainsAllItems2() {
+        Assert.assertTrue(false);
+    }
+
 }
