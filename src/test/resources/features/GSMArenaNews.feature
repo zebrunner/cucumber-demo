@@ -12,3 +12,14 @@ Feature: GSM Arena News testing
     |gfrwg4rgtqwfg4e|frawegregregerg|egqwrgf3qg3rg
     |fgwergfwqg4erg |fgawgwgwerg    |gaergbregaegrw3gr
 
+  @demo
+  Scenario Outline: GSM Arena open page - failed
+    Given I am on main page
+    When I open 'News' page
+    Then page 'News' should be open
+    And page 'News' should contains all items
+    Examples: |dsafasdfg|rsgrgargf|rsaggga
+    |agsfgarsfg|wregf43wqg|gewgqrgrgasgvsrgvragwgqrg
+    |gfrwg4rgtqwfg4e|asdgasrgasrgf|egqwrgf3qg3rg
+    |fgwergasrgrsagasrgrasgfwqg4erg |fgasargsrafgsgwgwgwerg    |gaesagsagsggsasgggagrgbregaegrw3gr
+
